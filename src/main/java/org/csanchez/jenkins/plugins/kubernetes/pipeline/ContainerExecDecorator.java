@@ -347,29 +347,31 @@ public class ContainerExecDecorator extends LauncherDecorator implements Seriali
                                 String.format("cd \"%s\"%s", pwd, NEWLINE).getBytes(StandardCharsets.UTF_8));
 
                     }
+
                     //get global vars here, run the export first as they'll get overwritten.
-                    if (globalVars != null) {
-                            this.setupEnvironmentVariable(globalVars, watch);
-                    }
 
-                    if(rcEnvVars != null) {
-                        this.setupEnvironmentVariable(rcEnvVars, watch);
-                    }
+                    // if (globalVars != null) {
+                    //         this.setupEnvironmentVariable(globalVars, watch);
+                    // }
 
-                    EnvVars envVars = new EnvVars();
-                    if (environmentExpander != null) {
-                        environmentExpander.expand(envVars);
-                    }
+                    // if(rcEnvVars != null) {
+                    //     this.setupEnvironmentVariable(rcEnvVars, watch);
+                    // }
 
-                    //setup specific command envs passed into cmd
-                    if (cmdEnvs != null) {
-                        LOGGER.log(Level.FINEST, "Launching with env vars: {0}", Arrays.toString(cmdEnvs));
-                        for (String cmdEnv : cmdEnvs) {
-                            envVars.addLine(cmdEnv);
-                        }
-                    }
+                    // EnvVars envVars = new EnvVars();
+                    // if (environmentExpander != null) {
+                    //     environmentExpander.expand(envVars);
+                    // }
 
-                    this.setupEnvironmentVariable(envVars, watch);
+                    // //setup specific command envs passed into cmd
+                    // if (cmdEnvs != null) {
+                    //     LOGGER.log(Level.FINEST, "Launching with env vars: {0}", Arrays.toString(cmdEnvs));
+                    //     for (String cmdEnv : cmdEnvs) {
+                    //         envVars.addLine(cmdEnv);
+                    //     }
+                    // }
+
+                    // this.setupEnvironmentVariable(envVars, watch);
                     doExec(watch, printStream, masks, commands);
                     if (closables == null) {
                         closables = new ArrayList<>();

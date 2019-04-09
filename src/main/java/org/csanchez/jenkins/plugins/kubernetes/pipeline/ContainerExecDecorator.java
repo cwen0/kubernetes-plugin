@@ -401,7 +401,7 @@ public class ContainerExecDecorator extends LauncherDecorator implements Seriali
 
                     LOGGER.log(Level.FINEST, "Launching with env vars: {0}", envVars.toString());
 
-                    this.setupEnvironmentVariable(envVars, stdin);
+                    // this.setupEnvironmentVariable(envVars, stdin);
 
                     doExec(stdin, printStream, masks, commands);
 
